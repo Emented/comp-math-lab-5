@@ -50,10 +50,10 @@ function loadFunc() {
     for (let i = 0; i < n; i++) {
         const x = a + i * step;
         let y = 0;
-        if (option === "sin-option") {
-            y = Math.sin(x);
+        if (option === "cos-option") {
+            y = Math.cos(x);
         } else if (option === "square-option") {
-            y = Math.pow(x, 2) + x
+            y = Math.pow(x, 2) - x
         }
 
         arr.push(y);
