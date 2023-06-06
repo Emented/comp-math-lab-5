@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Computational math lab 4</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/table_changer.js" type="text/javascript"></script>
+    <script src="js/submit_table.js" type="text/javascript"></script>
+    <script src="js/file_worker.js" type="text/javascript"></script>
+    <script src="js/graph.js" type="text/javascript"></script>
+    <script src="js/function_worker.js" type="text/javascript"></script>
+    <script src="js/config.js" type="text/javascript"></script>
+    <script src="js/util.js" type="text/javascript"></script>
+    <script src="js/input_switcher.js" type="text/javascript"></script>
+    <script src="js/function_loader.js" type="text/javascript"></script>
+    <script src="js/result_table_builder.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" charset="UTF-8"
+            src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+</head>
+<body onload="initializeTable()">
+<h1>Povetin Ilya P32121</h1>
+<h1>Input Points</h1>
+<h2><span id="row_num" class="row_num"></span> rows</h2>
+<div class="container">
+    <form>
+        <table>
+            <thead>
+            <tr>
+                <th class="first_line">X</th>
+                <th class="first_line">Y</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <input type="number" placeholder="Enter X" min="-10000000000" max="1000000" name="x1" step="any" required>
+                </td>
+                <td>
+                    <input type="number" placeholder="Enter Y" min="-1000000" max="1000000" name="y1" step="any" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number" placeholder="Enter X" min="-1000000" max="1000000" name="x2" step="any" required>
+                </td>
+                <td>
+                    <input type="number" placeholder="Enter Y" min="-1000000" max="1000000" name="y2" step="any" required>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="number" placeholder="Enter X" min="-1000000" max="1000000" name="x3" step="any" required></td>
+                <td><input type="number" placeholder="Enter Y" min="-1000000" max="1000000" name="y3" step="any" required></td>
+            </tr>
+            <tr>
+                <td><input type="number" placeholder="Enter X" min="-1000000" max="1000000" name="x4" step="any" required></td>
+                <td><input type="number" placeholder="Enter Y" min="-1000000" max="1000000" name="y4" step="any" required></td>
+            </tr>
+            <tr>
+                <td><input type="number" placeholder="Enter X" min="-1000000" max="1000000" name="x5" step="any" required></td>
+                <td><input type="number" placeholder="Enter Y" min="-1000000" max="1000000" name="y5" step="any" required></td>
+            </tr>
+            <tr>
+                <td><input type="number" placeholder="Enter X" min="-1000000" max="1000000" name="x6" step="any" required></td>
+                <td><input type="number" placeholder="Enter Y" min="-1000000" max="1000000" name="y6" step="any" required></td>
+            </tr>
+            <tr>
+                <td><input type="number" placeholder="Enter X" min="-1000000" max="1000000" name="x7" step="any" required></td>
+                <td><input type="number" placeholder="Enter Y" min="-1000000" max="1000000" name="y7" step="any" required></td>
+            </tr>
+            <tr>
+                <td><input type="number" placeholder="Enter X" min="-1000000" max="1000000" name="x8" step="any" required></td>
+                <td><input type="number" placeholder="Enter Y" min="-1000000" max="1000000" name="y8" step="any" required></td>
+            </tr>
+            <tr id="row-9" style="display: none">
+                <td><input type="number" placeholder="Enter X" min="-1000000" max="1000000" name="x9" step="any"></td>
+                <td><input type="number" placeholder="Enter Y" min="-1000000" max="1000000" name="y9" step="any"></td>
+            </tr>
+            <tr id="row-10" style="display: none">
+                <td><input type="number" placeholder="Enter X" min="-1000000" max="1000000" name="x10" step="any"></td>
+                <td><input type="number" placeholder="Enter Y" min="-1000000" max="1000000" name="y10" step="any"></td>
+            </tr>
+            <tr id="row-11" style="display: none">
+                <td><input type="number" placeholder="Enter X" min="-1000000" max="1000000" name="x11" step="any"></td>
+                <td><input type="number" placeholder="Enter Y" min="-1000000" max="1000000" name="y11" step="any"></td>
+            </tr>
+            <tr id="row-12" style="display: none">
+                <td><input type="number" placeholder="Enter X" min="-1000000" max="1000000" name="x12" step="any"></td>
+                <td><input type="number" placeholder="Enter Y" min="-1000000" max="1000000" name="y12" step="any"></td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="inc_btn" onclick="increment()" type="button" class="add-row"></button>
+                </td>
+                <td>
+                    <button id="dec_btn" onclick="decrement()" type="button" class="remove-row"></button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="submit" type="button" onclick="submitForm(event)">Send</button>
+                </td>
+                <td>
+                    <button type="button" class="load-button" onclick="loadFile()">Load File</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <button type="button" class="choose-button" onclick="chooseFunc()">Choose Function</button>
+        <br>
+        <div class="error_box">
+            <h2 id="error_label" class="error_label"></h2>
+        </div>
+    </form>
+
+    <div style="display: none; justify-content: center; padding-top: 40px; margin: 0 auto; max-width: 480px;"
+            id="function-input">
+        <input type="radio" name="toggle-option" id="sin-option" checked>
+        <label for="sin-option" class="radio-choose">sin(x)</label>
+        <br><br>
+        <input type="radio" name="toggle-option" id="square-option">
+        <label for="square-option" class="radio-choose">x^2 + x</label>
+
+        <br><br>
+        <div>
+            <div class="row-choose">
+                <input type="number" id="input-a" style="width: 48%" placeholder="Enter A" min="-100" max="100"
+                        name="LEFT" step="any">
+                <input type="number" id="input-b" style="width: 48%" placeholder="Enter B" min="-100" max="100"
+                        name="RIGHT" step="any">
+            </div>
+            <div class="row-choose">
+                <input type="number" id="input-n" placeholder="Enter N" min="0" max="100" name="N" step="any">
+            </div>
+            <br><br>
+            <button type="button" class="load-button" onclick="loadFunc()">Load Function</button>
+            <br><br>
+        </div>
+    </div>
+
+    <br>
+    <div class="result">
+        <h1>Result:</h1>
+
+        <h2>Table of finite differences:</h2>
+        <div id="tableContainer"></div>
+        <br><br>
+
+        <h2>Enter the value of X for an approximate calculation:</h2>
+        <div style="display: none; justify-content: center; padding-top: 40px; margin: 0 auto; max-width: 500px;" id="x-input">
+            <div>
+                <div class="row-choose">
+                    <input type="number" class="x-button" id="input-X" placeholder="Enter X" name="X" step="any">
+                </div>
+                <BR><BR>
+                <button type="button" class="load-button" onclick="countX()">Count</button>
+                <br><br>
+                <div class="row-choose">
+                    <h2> The answer obtained by the Newton method:
+                        <span id="newton_result"></span>
+                    </h2>
+                </div>
+                <br><br>
+                <div class="row-choose">
+                    <h2> The answer obtained by the Lagrange method:
+                        <span id="lagrange_result"></span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <br><br>
+
+        <div class="plot_box">
+            <div id="jxgbox" class="jxgbox"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
